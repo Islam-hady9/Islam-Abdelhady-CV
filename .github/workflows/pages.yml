@@ -6,9 +6,9 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write      # required for Pages deploy
-  id-token: write   # required for OIDC
+  contents: write   # allow committing preview.png back
+  pages: write
+  id-token: write
 
 concurrency:
   group: "pages"
@@ -20,17 +20,33 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          persist-credentials: true
 
-      - name: Install TeX Live (minimal set + fonts)
+      - name: Install TeX Live + utils
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends \
             texlive-latex-base texlive-latex-extra texlive-fonts-recommended \
-            texlive-fonts-extra texlive-luatex latexmk lmodern
+            texlive-fonts-extra texlive-luatex latexmk lmodern \
+            poppler-utils
 
-      - name: Build PDF and stage to dist/
+      - name: Build PDF, generate preview, stage to dist/
         working-directory: tools
         run: make
+
+      # Commit updated preview.png if it changed (README shows it from repo)
+      - name: Commit preview if changed
+        run: |
+          if git status --porcelain | grep -q "cv/assets/preview.png"; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add cv/assets/preview.png
+            git commit -m "chore: update preview.png"
+            git push
+          else
+            echo "No preview changes to commit."
+          fi
 
       - name: Upload Pages artifact (dist/)
         uses: actions/upload-pages-artifact@v3
