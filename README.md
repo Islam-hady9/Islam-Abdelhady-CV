@@ -35,14 +35,14 @@ It is built automatically with **GitHub Actions** and deployed to **GitHub Pages
 
 ```
 ├─ cv/                # Main LaTeX sources
-│  ├─ Islam\_Abdelhady\_CV.tex   # Final CV
-│  ├─ sb2nov\_base.tex          # Base template (reference)
+│  ├─ Islam_Abdelhady_CV.tex   # Final CV
+│  ├─ sb2nov_base.tex          # Base template (reference)
 │  ├─ glyphtounicode.tex       # Unicode mapping (ATS-friendly PDFs)
 │  ├─ assets/                  # Images, previews
 │  └─ build/                   # Temporary build artifacts (ignored)
 │
 ├─ dist/              # ✅ Published to GitHub Pages (contains final PDF + index.html)
-│  ├─ Islam\_Abdelhady\_CV.pdf
+│  ├─ Islam_Abdelhady_CV.pdf
 │  └─ index.html
 │
 ├─ template/          # Minimal LaTeX template for reuse
