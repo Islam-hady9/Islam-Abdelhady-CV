@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write   # allow committing preview.png back
+  contents: write
   pages: write
   id-token: write
 
@@ -35,10 +35,9 @@ jobs:
         working-directory: tools
         run: make
 
-      # Commit updated preview.png if it changed (README shows it from repo)
       - name: Commit preview if changed
         run: |
-          if git status --porcelain | grep -q "cv/assets/preview.png"; then
+          if git status --porcelain | grep -q "^ M cv/assets/preview.png\|^?? cv/assets/preview.png"; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add cv/assets/preview.png
@@ -54,11 +53,11 @@ jobs:
           path: dist
 
   deploy:
+    needs: build
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    needs: build
-    runs-on: ubuntu-latest
     steps:
       - name: Deploy to GitHub Pages
         id: deployment

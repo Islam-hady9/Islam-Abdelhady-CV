@@ -13,16 +13,14 @@ pdf:
 	@mkdir -p $(BUILD_DIR)
 	latexmk -pdf -output-directory=$(BUILD_DIR) $(CV_TEX)
 
-# Generate a PNG of page 1 from the built PDF (needs poppler-utils)
+# Generate a ~1600px PNG for README (keeps file <1–2 MB)
 preview: pdf
 	@mkdir -p $(ASSETS_DIR)
-	# create preview.png at ~1600px wide
 	pdftoppm -png -singlefile -f 1 -l 1 -scale-to 1600 $(OUT_PDF) $(ASSETS_DIR)/preview
 
 copy: pdf
 	@mkdir -p $(DIST_DIR)
 	@cp -f $(OUT_PDF) $(DIST_PDF)
-	# ensure a minimal landing page exists
 	@[ -f $(DIST_DIR)/index.html ] || printf '%s\n' '<!doctype html><title>Islam AbdElhady — CV</title><a href="Islam_Abdelhady_CV.pdf">Download CV (PDF)</a>' > $(DIST_DIR)/index.html
 
 clean:
