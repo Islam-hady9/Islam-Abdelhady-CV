@@ -34,27 +34,30 @@ It is built automatically with **GitHub Actions** and deployed to **GitHub Pages
 ## 🛠 Repository Structure
 
 ```
-├─ cv/                # Main LaTeX sources
-│  ├─ Islam_Abdelhady_CV.tex   # Final CV
-│  ├─ sb2nov_base.tex          # Base template (reference)
-│  ├─ glyphtounicode.tex       # Unicode mapping (ATS-friendly PDFs)
-│  ├─ assets/                  # Images, previews
-│  └─ build/                   # Temporary build artifacts (ignored)
+.
+├─ cv/                          # Main LaTeX sources
+│  ├─ Islam_Abdelhady_CV.tex    # Final CV (your actual content in LaTeX)
+│  ├─ sb2nov_base.tex           # Base template (reference, sb2nov RenderCV theme)
+│  ├─ glyphtounicode.tex        # Unicode mapping to ensure ATS-friendly / machine-readable PDF
+│  ├─ assets/                   # Images, previews (e.g., preview.png for README/landing page)
+│  └─ build/                    # Temporary build artifacts (ignored in git, used by latexmk)
 │
-├─ dist/              # ✅ Published to GitHub Pages (contains final PDF + index.html)
-│  ├─ Islam_Abdelhady_CV.pdf
-│  └─ index.html
+├─ dist/                        # ✅ Published to GitHub Pages (contains final PDF + site landing page)
+│  ├─ Islam_Abdelhady_CV.pdf    # Generated CV (compiled from LaTeX)
+│  └─ index.html                # Landing page with link(s) to download/view CV
 │
-├─ template/          # Minimal LaTeX template for reuse
-├─ tools/             # Build tools
-│  ├─ Makefile
-│  └─ latexmkrc
+├─ template/                    # Minimal LaTeX template for reuse
+│  └─ minimal_template.tex      # Starter template for others to adapt their own CV
 │
-├─ .github/workflows/ # GitHub Actions CI/CD
-│  └─ pages.yml
+├─ tools/                       # Build tools and automation configs
+│  ├─ Makefile                  # Build instructions (compile LaTeX, copy outputs, generate preview)
+│  └─ latexmkrc                 # Config file for latexmk (defines build rules and settings)
 │
-├─ LICENSE
-└─ README.md
+├─ .github/workflows/           # GitHub Actions CI/CD definitions
+│  └─ pages.yml                 # Workflow that builds the CV and deploys to GitHub Pages
+│
+├─ LICENSE                      # Licensing terms (MIT for template/tools, All Rights Reserved for CV content)
+└─ README.md                    # Project overview, usage instructions, links to PDF/Pages
 ```
 
 ---
