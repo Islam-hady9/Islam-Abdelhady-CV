@@ -1,9 +1,9 @@
-MIT License
+MIT License (applies to template and build scripts only)
 
 Copyright (c) 2025 Islam Abd-Elhady
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
+of the template files and associated build scripts (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
@@ -19,3 +19,20 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+-----------------------------------------------------------------------
+
+📄 CV Content License (All Rights Reserved)
+
+The following files are **NOT** covered by the MIT License:
+
+- `cv/Islam_Abdelhady_CV.tex`
+- `dist/Islam_Abdelhady_CV.pdf`
+- `cv/assets/preview.png`
+
+These files contain original biographical, professional, and personal content
+of Islam Abd-Elhady and are protected under copyright law.
+
+You may **view** these files for personal reference, but you may not copy,
+modify, redistribute, or create derivative works based on them without
+explicit written permission from the author.

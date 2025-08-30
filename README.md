@@ -91,4 +91,13 @@ If you’d like to use this workflow for your own CV:
 
 ---
 
+## 📄 Licensing
+
+- The LaTeX **template** and **build workflow** are open-sourced under the [MIT License](LICENSE).
+- The actual **CV content** (`Islam_Abdelhady_CV.tex`, `Islam_Abdelhady_CV.pdf`, `preview.png`)  
+  is © 2025 Islam Abd-Elhady — all rights reserved.  
+  You may view these files, but reuse or redistribution is not permitted.
+
+---
+
 💡 *This project shows how LaTeX + GitHub Actions + Pages can give you a professional, auto-updating, and easily shareable CV.*
