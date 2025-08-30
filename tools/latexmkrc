@@ -1,0 +1,4 @@
+$pdf_mode = 1;            # pdflatex
+$out_dir = 'cv/build';
+$interaction = 'nonstopmode';
+$diagnostics = 1;

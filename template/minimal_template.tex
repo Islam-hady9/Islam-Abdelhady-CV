@@ -1,0 +1,408 @@
+\documentclass[10pt, letterpaper]{article}
+
+% Packages:
+\usepackage[
+    ignoreheadfoot,
+    top=2 cm,
+    bottom=2 cm,
+    left=2 cm,
+    right=2 cm,
+    footskip=1.0 cm
+]{geometry}
+\usepackage{titlesec}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{primaryColor}{RGB}{0, 79, 144}
+\usepackage{enumitem}
+\usepackage{fontawesome5}
+\usepackage{amsmath}
+\usepackage[
+    pdftitle={Islam Abd_Elhady — CV},
+    pdfauthor={Islam Abd_Elhady},
+    pdfcreator={LaTeX with RenderCV},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref}
+\usepackage[pscoord]{eso-pic}
+\usepackage{calc}
+\usepackage{bookmark}
+\usepackage{lastpage}
+\usepackage{changepage}
+\usepackage{paracol}
+\usepackage{ifthen}
+\usepackage{needspace}
+\usepackage{iftex}
+
+% Ensure PDF is machine readable / ATS parsable:
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+
+% Layout + styles:
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt}
+\pagestyle{empty}
+\setcounter{secnumdepth}{0}
+\setlength{\parindent}{0pt}
+\setlength{\topskip}{0pt}
+\setlength{\columnsep}{0cm}
+
+\makeatletter
+\let\ps@customFooterStyle\ps@plain
+\patchcmd{\ps@customFooterStyle}{\thepage}{
+    \color{gray}\textit{\small Islam Abd\_Elhady — Page \thepage{} of \pageref*{LastPage}}
+}{}{}
+\makeatother
+\pagestyle{customFooterStyle}
+
+\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+\titlespacing{\section}{-1pt}{0.3 cm}{0.2 cm}
+
+\renewcommand\labelitemi{$\circ$}
+\newenvironment{highlights}{
+  \begin{itemize}[
+    topsep=0.10 cm,
+    parsep=0.10 cm,
+    partopsep=0pt,
+    itemsep=0pt,
+    leftmargin=0.4 cm + 10pt
+  ]}
+  {\end{itemize}
+}
+
+\newenvironment{highlightsforbulletentries}{
+  \begin{itemize}[
+    topsep=0.10 cm,
+    parsep=0.10 cm,
+    partopsep=0pt,
+    itemsep=0pt,
+    leftmargin=10pt
+  ]}
+  {\end{itemize}
+}
+
+\newenvironment{onecolentry}{
+  \begin{adjustwidth}{0.2 cm + 0.00001 cm}{0.2 cm + 0.00001 cm}
+}{
+  \end{adjustwidth}
+}
+
+\newenvironment{twocolentry}[2][]{
+  \onecolentry
+  \def\secondColumn{#2}
+  \setcolumnwidth{\fill, 4.5 cm}
+  \begin{paracol}{2}
+}{
+  \switchcolumn \raggedleft \secondColumn
+  \end{paracol}
+  \endonecolentry
+}
+
+\newenvironment{header}{
+  \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
+}{
+  \par\kern\topsep
+}
+
+% “Last updated” widget:
+\newcommand{\placelastupdatedtext}{%
+  \AddToShipoutPictureFG*{%
+    \put(
+      \LenToUnit{\paperwidth-2 cm-0.2 cm+0.05cm},
+      \LenToUnit{\paperheight-1.0 cm}
+    ){\vtop{{\null}\makebox[0pt][c]{%
+      \small\color{gray}\textit{Last updated: \today}\hspace{\widthof{Last updated: \today}}
+    }}}%
+  }%
+}
+
+% Preserve original \href for icons:
+\let\hrefWithoutArrow\href
+\renewcommand{\href}[2]{\hrefWithoutArrow{#1}{\ifthenelse{\equal{#2}{}}{ }{#2 }\raisebox{.15ex}{\footnotesize \faExternalLink*}}}
+
+\begin{document}
+% Helpers for the centered dot list in the header:
+\newcommand{\AND}{\unskip
+  \cleaders\copy\ANDbox\hskip\wd\ANDbox
+  \ignorespaces}
+\newsavebox\ANDbox
+\sbox\ANDbox{}
+
+\placelastupdatedtext
+
+% =========================
+% HEADER
+% =========================
+\begin{header}
+  \textbf{\fontsize{24 pt}{24 pt}\selectfont Islam Abd\_Elhady}
+
+  \vspace{0.3 cm}
+
+  \normalsize
+  % Location
+  \mbox{{\color{black}\footnotesize\faMapMarker*}\hspace*{0.13cm}Cairo, Egypt}%
+  \kern 0.25 cm%
+  \AND%
+  \kern 0.25 cm%
+  % Email
+  \mbox{\hrefWithoutArrow{mailto:islam@email.com}{\color{black}{\footnotesize\faEnvelope[regular]}\hspace*{0.13cm}islam@email.com}}%
+  \kern 0.25 cm%
+  \AND%
+  \kern 0.25 cm%
+  % Phone
+  \mbox{\hrefWithoutArrow{tel:+20-000-000-0000}{\color{black}{\footnotesize\faPhone*}\hspace*{0.13cm}+20 000 000 0000}}%
+  \kern 0.25 cm%
+  \AND%
+  \kern 0.25 cm%
+  % Website/Portfolio
+  \mbox{\hrefWithoutArrow{https://yourportfolio.com}{\color{black}{\footnotesize\faLink}\hspace*{0.13cm}yourportfolio.com}}%
+  \kern 0.25 cm%
+  \AND%
+  \kern 0.25 cm%
+  % LinkedIn
+  \mbox{\hrefWithoutArrow{https://linkedin.com/in/yourusername}{\color{black}{\footnotesize\faLinkedinIn}\hspace*{0.13cm}linkedin.com/in/yourusername}}%
+  \kern 0.25 cm%
+  \AND%
+  \kern 0.25 cm%
+  % GitHub
+  \mbox{\hrefWithoutArrow{https://github.com/yourusername}{\color{black}{\footnotesize\faGithub}\hspace*{0.13cm}github.com/yourusername}}%
+\end{header}
+
+\vspace{0.3 cm - 0.3 cm}
+
+% =========================
+% PROFESSIONAL SUMMARY
+% =========================
+\section{Professional Summary}
+\begin{onecolentry}
+  \textit{2–3 lines max. Example (replace):} AI/ML Engineer specializing in LLMs, Generative AI, and computer vision. Build end-to-end systems (FastAPI, Docker, Azure/AWS) with LoRA fine-tuning, efficient inference, and multilingual RAG. Delivered production features for chatbots, brand analytics, and NFT→apparel pipelines.
+\end{onecolentry}
+
+% =========================
+% SKILLS MATRIX
+% =========================
+\section{Skills}
+\begin{onecolentry}
+  \textbf{Languages:} Python, C/C++, Bash, SQL \\
+  \textbf{ML/GenAI:} PyTorch, Transformers, Diffusers, LoRA/PEFT, xFormers, FAISS, CLIP, DINOv2, SAM \\
+  \textbf{LLMs:} Qwen 3, Llama 3, DeepSeek-R1, GPT-class; prompting, RAG, finetuning, eval \\
+  \textbf{CV/Image:} Playground v2.5/SDXL, Real-ESRGAN, SwinIR \\
+  \textbf{Serving/Data:} FastAPI, WebSocket, Redis, Celery/RQ, ONNX/TensorRT (if used) \\
+  \textbf{Cloud \& MLOps:} Azure VMs \& Marketplace, AWS g5.4xlarge/g5.8xlarge, Docker, systemd, CI/CD \\
+  \textbf{Scraping/Data:} Apify, Selenium, BeautifulSoup \\
+  \textbf{Tools:} Git/GitHub Actions, Linux/Ubuntu
+\end{onecolentry}
+
+% =========================
+% EXPERIENCE (reverse chronological)
+% =========================
+\section{Experience}
+
+% ---- TEMPLATE ENTRY 1 ----
+\begin{twocolentry}{
+  \textit{Cairo, EG} \\
+  \textit{YYYY -- Present}}
+  \textbf{AI/ML Engineer} \\
+  \textit{VEEM Solutions}
+\end{twocolentry}
+\vspace{0.10 cm}
+\begin{onecolentry}
+  \begin{highlights}
+    \item {Impact bullet \#1 — Action + Tech + Metric (e.g., Built multilingual RAG chatbot with FAISS \& MiniLM, cutting support resolution time by \textbf{35\%}).}
+    \item {Impact bullet \#2 — (e.g., Productionized FastAPI WS pipelines; added caching with Redis; reduced latency by \textbf{X\%}).}
+    \item {Impact bullet \#3 — (e.g., Designed CI/CD + Docker/systemd deploys on Azure/AWS).}
+  \end{highlights}
+\end{onecolentry}
+
+% ---- TEMPLATE ENTRY 2 ----
+\begin{twocolentry}{
+  \textit{Remote} \\
+  \textit{YYYY -- YYYY}}
+  \textbf{AI Engineer (NFT Wear AI)} \\
+  \textit{DigiTee.io}
+\end{twocolentry}
+\vspace{0.10 cm}
+\begin{onecolentry}
+  \begin{highlights}
+    \item {LoRA fine-tuning for Stable Diffusion (Playground v2.5/SDXL) to convert NFT art into apparel mockups; background removal (rembg), upscaling (Real-ESRGAN/SwinIR).}
+    \item {Optimized GPU memory with xFormers \& gradient checkpointing; reduced OOMs and enabled concurrent requests (\textbf{g5.4xlarge/g5.8xlarge}).}
+    \item {Exposed generation pipeline over FastAPI; improved turnaround from hours to minutes.}
+  \end{highlights}
+\end{onecolentry}
+
+% ---- TEMPLATE ENTRY 3 ----
+\begin{twocolentry}{
+  \textit{Cairo, EG} \\
+  \textit{YYYY -- YYYY}}
+  \textbf{Founder / Lead — Shrwd.ai} \\
+  \textit{Brand Analysis \& Tracking}
+\end{twocolentry}
+\vspace{0.10 cm}
+\begin{onecolentry}
+  \begin{highlights}
+    \item {Built scanners using Apify/Selenium/BS4; computed engagement/SEO metrics via NLP/heuristics; designed dashboards.}
+    \item {Architected data ingestion \& RAG knowledge base; integrated SimilarWeb/X/Facebook scrapers.}
+  \end{highlights}
+\end{onecolentry}
+
+% ---- TEMPLATE ENTRY 4 ----
+\begin{twocolentry}{
+  \textit{Remote} \\
+  \textit{YYYY -- YYYY}}
+  \textbf{Architect — Audira} \\
+  \textit{AI Voice Agent / Onboarding SuperAgent}
+\end{twocolentry}
+\vspace{0.10 cm}
+\begin{onecolentry}
+  \begin{highlights}
+    \item {Designed multi-agent WS flows, memory, and compliance prompts; faster-whisper STT (CPU int8).}
+    \item {Modular FastAPI routers, Pydantic schemas; systemd services; telemetry and rate limiting.}
+  \end{highlights}
+\end{onecolentry}
+
+% =========================
+% SELECTED PROJECTS
+% =========================
+\section{Selected Projects}
+
+% Project 1
+\begin{twocolentry}{
+  \textit{\href{https://github.com/yourusername/nft-wear-ai}{github.com/yourusername/nft-wear-ai}}}
+  \textbf{NFT Wear AI — Apparel Mockups from NFT Art}
+\end{twocolentry}
+\vspace{0.10 cm}
+\begin{onecolentry}
+  \begin{highlights}
+    \item {Diffusers + LoRA fine-tuning; rembg background removal; Real-ESRGAN upscaling; FastAPI endpoint.}
+    \item {Outcome/metrics (fill): e.g., generated \textbf{N} mockups/day; reduced manual design time by \textbf{X\%}.}
+  \end{highlights}
+\end{onecolentry}
+
+% Project 2
+\begin{twocolentry}{
+  \textit{\href{https://github.com/yourusername/brand-health-scanner}{github.com/yourusername/brand-health-scanner}}}
+  \textbf{Brand Health Scanner}
+\end{twocolentry}
+\vspace{0.10 cm}
+\begin{onecolentry}
+  \begin{highlights}
+    \item {Apify + Selenium crawlers; compute engagement, sentiment, SEO visibility; dashboards \& alerts.}
+  \end{highlights}
+\end{onecolentry}
+
+% Project 3
+\begin{twocolentry}{
+  \textit{\href{https://github.com/yourusername/rag-support-bot}{github.com/yourusername/rag-support-bot}}}
+  \textbf{RAG Customer Support Bot}
+\end{twocolentry}
+\vspace{0.10 cm}
+\begin{onecolentry}
+  \begin{highlights}
+    \item {FAISS + MiniLM; bilingual prompts (AR/EN); WebSocket chat; context-window \& latency tuning.}
+  \end{highlights}
+\end{onecolentry}
+
+% =========================
+% EDUCATION
+% =========================
+\section{Education}
+\begin{twocolentry}{
+  \textit{City, Country} \\
+  \textit{YYYY -- YYYY}}
+  \textbf{B.Sc. in (Your Degree)} \\
+  \textit{Your University}
+\end{twocolentry}
+\vspace{0.10 cm}
+\begin{onecolentry}
+  \begin{highlights}
+    \item \textbf{Coursework:} Machine Learning, Deep Learning, Computer Vision, Distributed Systems
+    % \item GPA: X.Y/Z.0 (optional)
+  \end{highlights}
+\end{onecolentry}
+
+% =========================
+% CERTIFICATIONS
+% =========================
+\section{Certifications}
+\begin{onecolentry}
+  \begin{highlightsforbulletentries}
+    \item {DeepLearning.ai — Course/Spec (Year)}
+    \item {Azure / AWS Certification (Year)}
+    \item {Udemy / Coursera tracks (Year)}
+  \end{highlightsforbulletentries}
+\end{onecolentry}
+
+% =========================
+% PUBLICATIONS & RESEARCH
+% =========================
+\section{Publications \& Research}
+\begin{onecolentry}
+  \begin{highlightsforbulletentries}
+    \item {Transparent Image Layer Diffusion using Latent Transparency — \textit{notes/summary or relevance}.}
+    \item {Model-Distributed Inference for LLMs at the Edge — \textit{notes/summary or relevance}.}
+  \end{highlightsforbulletentries}
+\end{onecolentry}
+
+% =========================
+% OPEN SOURCE & COMMUNITY
+% =========================
+\section{Open Source \& Community}
+\begin{onecolentry}
+  \begin{highlightsforbulletentries}
+    \item {Repo/PR/Issue — role/contribution (\href{https://github.com/yourusername}{GitHub}).}
+  \end{highlightsforbulletentries}
+\end{onecolentry}
+
+% =========================
+% SPEAKING / WORKSHOPS
+% =========================
+\section{Speaking / Workshops}
+\begin{onecolentry}
+  \begin{highlightsforbulletentries}
+    \item {Talk/Workshop Title — Venue (Year).}
+  \end{highlightsforbulletentries}
+\end{onecolentry}
+
+% =========================
+% AWARDS
+% =========================
+\section{Awards}
+\begin{onecolentry}
+  \begin{highlightsforbulletentries}
+    \item {Award/Competition — Result (Year).}
+  \end{highlightsforbulletentries}
+\end{onecolentry}
+
+% =========================
+% COURSES & MOOCS
+% =========================
+\section{Courses \& MOOCs}
+\begin{onecolentry}
+  \begin{highlightsforbulletentries}
+    \item {Course — Provider (Year).}
+    \item {Course — Provider (Year).}
+  \end{highlightsforbulletentries}
+\end{onecolentry}
+
+% =========================
+% LANGUAGES (HUMAN)
+% =========================
+\section{Languages}
+\begin{onecolentry}
+  Arabic (Native) \quad\AND\quad English (Professional)
+\end{onecolentry}
+
+% =========================
+% EXTRAS
+% =========================
+\section{Extras}
+\begin{onecolentry}
+  \begin{highlightsforbulletentries}
+    \item {Availability, work authorization, relocation/remote preferences (optional).}
+  \end{highlightsforbulletentries}
+\end{onecolentry}
+
+\end{document}

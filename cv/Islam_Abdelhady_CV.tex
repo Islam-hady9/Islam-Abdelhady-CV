@@ -1,0 +1,440 @@
+\documentclass[10pt, letterpaper]{article}
+
+% Packages:
+\usepackage[
+    ignoreheadfoot,
+    top=2 cm,
+    bottom=2 cm,
+    left=2 cm,
+    right=2 cm,
+    footskip=1.0 cm
+]{geometry}
+\usepackage{titlesec}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{primaryColor}{RGB}{0, 79, 144}
+\usepackage{enumitem}
+\usepackage{fontawesome5}
+\usepackage{amsmath}
+\usepackage[
+    pdftitle={Islam Abd_Elhady — CV},
+    pdfauthor={Islam Abd_Elhady},
+    pdfcreator={LaTeX with RenderCV},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref}
+\usepackage[pscoord]{eso-pic}
+\usepackage{calc}
+\usepackage{bookmark}
+\usepackage{lastpage}
+\usepackage{changepage}
+\usepackage{paracol}
+\usepackage{ifthen}
+\usepackage{needspace}
+\usepackage{iftex}
+
+% Ensure PDF is machine readable / ATS parsable:
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+
+% Layout + styles:
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt}
+\pagestyle{empty}
+\setcounter{secnumdepth}{0}
+\setlength{\parindent}{0pt}
+\setlength{\topskip}{0pt}
+\setlength{\columnsep}{0cm}
+
+\makeatletter
+\let\ps@customFooterStyle\ps@plain
+\patchcmd{\ps@customFooterStyle}{\thepage}{
+    \color{gray}\textit{\small Islam Abd-Elhady — Page \thepage{} of \pageref*{LastPage}}
+}{}{}
+\makeatother
+\pagestyle{customFooterStyle}
+
+\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+\titlespacing{\section}{-1pt}{0.3 cm}{0.2 cm}
+
+\renewcommand\labelitemi{$\circ$}
+\newenvironment{highlights}{
+  \begin{itemize}[
+    topsep=0.10 cm,
+    parsep=0.10 cm,
+    partopsep=0pt,
+    itemsep=0pt,
+    leftmargin=0.4 cm + 10pt
+  ]}
+  {\end{itemize}
+}
+
+\newenvironment{highlightsforbulletentries}{
+  \begin{itemize}[
+    topsep=0.10 cm,
+    parsep=0.10 cm,
+    partopsep=0pt,
+    itemsep=0pt,
+    leftmargin=10pt
+  ]}
+  {\end{itemize}
+}
+
+\newenvironment{onecolentry}{
+  \begin{adjustwidth}{0.2 cm + 0.00001 cm}{0.2 cm + 0.00001 cm}
+}{
+  \end{adjustwidth}
+}
+
+\newenvironment{twocolentry}[2][]{
+  \onecolentry
+  \def\secondColumn{#2}
+  \setcolumnwidth{\fill, 4.5 cm}
+  \begin{paracol}{2}
+}{
+  \switchcolumn \raggedleft \secondColumn
+  \end{paracol}
+  \endonecolentry
+}
+
+\newenvironment{header}{
+  \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
+}{
+  \par\kern\topsep
+}
+
+% “Last updated” widget:
+\newcommand{\placelastupdatedtext}{%
+  \AddToShipoutPictureFG*{%
+    \put(
+      \LenToUnit{\paperwidth-2 cm-0.2 cm+0.05cm},
+      \LenToUnit{\paperheight-1.0 cm}
+    ){\vtop{{\null}\makebox[0pt][c]{%
+      \small\color{gray}\textit{Last updated: \today}\hspace{\widthof{Last updated: \today}}
+    }}}%
+  }%
+}
+
+% Preserve original \href for icons:
+\let\hrefWithoutArrow\href
+\renewcommand{\href}[2]{\hrefWithoutArrow{#1}{\ifthenelse{\equal{#2}{}}{ }{#2 }\raisebox{.15ex}{\footnotesize \faExternalLink*}}}
+
+\begin{document}
+% Helpers for the centered dot list in the header:
+\newcommand{\AND}{\unskip
+  \cleaders\copy\ANDbox\hskip\wd\ANDbox
+  \ignorespaces}
+\newsavebox\ANDbox
+\sbox\ANDbox{}
+
+\placelastupdatedtext
+
+% =========================
+% HEADER
+% =========================
+\begin{header}
+  \textbf{\fontsize{24 pt}{24 pt}\selectfont Islam Abd-Elhady}
+
+  \vspace{0.3 cm}
+
+  \normalsize
+  % Location
+  \mbox{{\color{black}\footnotesize\faMapMarker*}\hspace*{0.13cm}Asyut, Egypt}%
+  \kern 0.25 cm%
+  \AND%
+  \kern 0.25 cm%
+  % Email
+  \mbox{\hrefWithoutArrow{mailto:eslamabdo71239@gmail.com}{\color{black}{\footnotesize\faEnvelope[regular]}\hspace*{0.13cm}eslamabdo71239@gmail.com}}%
+  \kern 0.25 cm%
+  \AND%
+  \kern 0.25 cm%
+  % Phone
+  \mbox{\hrefWithoutArrow{tel:+20-1066463355}{\color{black}{\footnotesize\faPhone*}\hspace*{0.13cm}+20 1066463355}}%
+  \kern 0.25 cm%
+  \AND%
+  \kern 0.25 cm%
+  % LinkedIn
+  \mbox{\hrefWithoutArrow{https://linkedin.com/in/islam-abd-elhady-323523211}{\color{black}{\footnotesize\faLinkedinIn}\hspace*{0.13cm}linkedin.com/in/islam-abd-elhady-323523211}}%
+  \kern 0.25 cm%
+  \AND%
+  \kern 0.25 cm%
+  % GitHub
+  \mbox{\hrefWithoutArrow{https://github.com/Islam-hady9}{\color{black}{\footnotesize\faGithub}\hspace*{0.13cm}github.com/Islam-hady9}}%
+\end{header}
+
+\vspace{0.3 cm - 0.3 cm}
+
+% =========================
+% PROFESSIONAL SUMMARY
+% =========================
+\section{Professional Summary}
+\begin{onecolentry}
+AI/ML Engineer with hands-on expertise in \textbf{Generative AI, LLM fine-tuning, agent-based systems, and computer vision}. Skilled in building \textbf{end-to-end pipelines} — from model training (LoRA, Diffusers, Transformers) to \textbf{scalable deployment} (FastAPI, Docker, Azure/AWS). Delivered production-ready solutions including multilingual \textbf{RAG chatbots}, intelligent multi-agent systems, and NFT-to-apparel generation pipelines that \textbf{automated mockup creation}, cutting design cycles from hours to minutes.
+\end{onecolentry}
+
+% =========================
+% EDUCATION
+% =========================
+\section{Education}
+\begin{twocolentry}{
+  \textit{Assiut, Egypt} \\
+  \textit{2020 -- 2024}}
+  \textbf{B.Sc. in Computer Science} \\
+  \textit{Faculty of Computers and Information, Assiut University}
+\end{twocolentry}
+\vspace{0.10 cm}
+\begin{onecolentry}
+  \begin{highlights}
+    \item \textbf{Relevant Coursework:} Machine Learning, Deep Learning, Computer Vision, Parallel Computers
+    % \item GPA: X.Y/4.0 (if you want to include it)
+  \end{highlights}
+\end{onecolentry}
+
+% =========================
+% EXPERIENCE (reverse chronological)
+% =========================
+\section{Experience}
+
+% ---- VEEM Solutions ----
+\begin{twocolentry}{
+  \textit{Jeddah, Makkah, Saudi Arabia (Remote)} \\
+  \textit{Sep 2024 -- Present}}
+  \textbf{AI/ML Engineer} \\
+  \textit{VEEM Solutions (including Shrwd.ai project)}
+\end{twocolentry}
+\vspace{0.10 cm}
+\begin{onecolentry}
+  \begin{highlights}
+    \item Designed and deployed a \textbf{large-scale multi-agent system} integrating a rich toolset, dynamic templates, and a \textbf{RAG knowledge layer} for intelligent orchestration, autonomous task execution, and context-grounded reasoning.
+    \item Within the agent platform, delivered multilingual \textbf{conversational assistants} powered by FAISS + MiniLM retrieval, significantly improving customer support efficiency and response quality.
+    \item Architected and implemented the \textbf{Shrwd.ai Brand Analysis \& Tracking Platform}, the next evolution of brand intelligence—combining crawlers (Apify/Selenium/BeautifulSoup), SEO/engagement metric computation, and interactive dashboards for actionable insights.
+    \item Engineered scalable \textbf{FastAPI/WebSocket pipelines} with Redis caching, Dockerized services, and \textbf{Azure} deployments (VMs \& Container Apps) with CI/CD workflows and systemd automation.
+  \end{highlights}
+\end{onecolentry}
+
+% ---- DigiTee.io ----
+\begin{twocolentry}{
+  \textit{Cayman Islands (Remote)} \\
+  \textit{Nov 2024 -- Present}}
+  \textbf{AI Engineer (Part-time)} \\
+  \textit{DigiTee.io}
+\end{twocolentry}
+\vspace{0.10 cm}
+\begin{onecolentry}
+  \begin{highlights}
+    \item Led the development of \textbf{NFT Wear AI}, fine-tuning Stable Diffusion with LoRA to automatically generate apparel mockups directly from NFT designs.
+    \item Contributed to the \textbf{Mintora project}, building AI-driven design pipelines and interactive features such as generative design creation using Playground v2.5/SDXL, conversational chat integration, \textbf{background removal (rembg)}, and \textbf{high-resolution upscaling (Real-ESRGAN/SwinIR)}.
+    \item Designed and deployed the \textbf{Audira multi-agent platform}, architecting intelligent agents with memory, STT (faster-whisper), TTS, and advanced orchestration to deliver multilingual voice/text onboarding and interaction.
+    \item Managed \textbf{deployment to cloud servers}, configuring and maintaining \textbf{AWS g5.4xlarge/g5.8xlarge GPU instances}, handling scalability, worker orchestration, and load balancing for high-concurrency workloads.
+    \item Implemented \textbf{GPU memory optimization} with xFormers and gradient checkpointing, reducing OOM errors and enabling stable concurrent inference across multiple workers.
+  \end{highlights}
+\end{onecolentry}
+
+% ---- Freelance ----
+\begin{twocolentry}{
+  \textit{Remote} \\
+  \textit{2024 -- Present}}
+  \textbf{Freelance AI/ML Engineer} \\
+  \textit{Independent Projects}
+\end{twocolentry}
+\vspace{0.10 cm}
+\begin{onecolentry}
+  \begin{highlights}
+    \item Delivered multiple \textbf{RAG-based solutions}, integrating FAISS/Hugging Face embeddings with FastAPI and WebSocket APIs for contextual Q\&A systems.
+    \item Designed and deployed custom \textbf{multi-agent architectures}, combining LangChain, LangGraph, and external tools for intelligent automation workflows.
+    \item Built speech-driven applications with \textbf{STT (faster-whisper)} and \textbf{TTS (multi-lingual synthesis)} pipelines, enabling real-time voice assistants.
+    \item Collaborated with clients on end-to-end AI projects, from model selection and fine-tuning to deployment on cloud infrastructure (\textbf{Azure, AWS, SaladCloud}).
+  \end{highlights}
+\end{onecolentry}
+
+% ---- USAID ----
+\begin{twocolentry}{
+  \textit{Asyut, Egypt} \\
+  \textit{Oct 2024 -- Apr 2025}}
+  \textbf{AI Instructor} \\
+  \textit{USAID (Ahmed Diefalla International Applied Technology School)}
+\end{twocolentry}
+\vspace{0.10 cm}
+\begin{onecolentry}
+  \begin{highlights}
+    \item Taught courses in \textbf{Software Engineering, Python programming, Artificial Intelligence, and Robotics}.
+    \item Guided students through hands-on projects and real-world applications, fostering innovation and practical problem-solving.
+    \item Developed structured learning modules that improved students’ technical and analytical skills.
+  \end{highlights}
+\end{onecolentry}
+
+% ---- Tweet Kod ----
+\begin{twocolentry}{
+  \textit{Karabük, Turkey (Remote)} \\
+  \textit{Mar 2024 -- Mar 2025}}
+  \textbf{Programming Content Creator (Part-time)} \\
+  \textit{Tweet Kod}
+\end{twocolentry}
+\vspace{0.10 cm}
+\begin{onecolentry}
+  \begin{highlights}
+    \item Developed \textbf{educational programming content} for kids and teens using Python, including practical applications, projects, and chapter-end quizzes.
+    \item Mentored students on graduation projects, improving their problem-solving and coding confidence.
+    \item Created engaging lesson materials tailored for different learning levels.
+  \end{highlights}
+\end{onecolentry}
+
+% ---- Future Kids, Codemy, Code & Barmja ----
+\begin{twocolentry}{
+  \textit{Cairo, Egypt (Remote)} \\
+  \textit{Jan 2024 -- Dec 2024}}
+  \textbf{Programming \& AI Instructor (Part-time)} \\
+  \textit{Future Kids, Codemy, Code \& Barmja}
+\end{twocolentry}
+\vspace{0.10 cm}
+\begin{onecolentry}
+  \begin{highlights}
+    \item Delivered courses in \textbf{Scratch, Python, Java, HTML, AI, and Pygame} for children and young adults.
+    \item Designed and tailored lesson plans to foster creativity, problem-solving, and programming confidence across diverse age groups.
+    \item Led students through hands-on projects that combined technical skills with creativity and critical thinking.
+  \end{highlights}
+\end{onecolentry}
+
+% =========================
+% SKILLS MATRIX
+% =========================
+\section{Skills}
+\begin{onecolentry}
+  \textbf{Programming Languages:} Python, C/C++, Java, C\#, Go, Bash, SQL \\[4pt]
+  \textbf{Machine Learning \& GenAI:} PyTorch, Transformers, Diffusers, LoRA/PEFT, xFormers, FAISS, CLIP, DINOv2, SAM \\[4pt]
+  \textbf{Large Language Models:} Qwen 3, Llama 3, DeepSeek-R1, GPT-class; prompting, RAG, fine-tuning, evaluation; \textbf{LangChain, LangGraph, Hugging Face} \\[4pt]
+  \textbf{Computer Vision \& Image Processing:} Stable Diffusion (Playground v2.5/SDXL), Real-ESRGAN, SwinIR \\[4pt]
+  \textbf{Deployment \& Data Engineering:} FastAPI, WebSocket, Redis, Celery/RQ, ONNX, TensorRT \\[4pt]
+  \textbf{Cloud \& MLOps:} Azure (VMs, Container Apps, Marketplace), AWS (g5.4xlarge/g5.8xlarge), Docker, systemd, CI/CD \\[4pt]
+  \textbf{Web Scraping \& Data Collection:} Apify, Selenium, BeautifulSoup \\[4pt]
+  \textbf{Developer Tools:} Git/GitHub Actions, Linux/Ubuntu \\[4pt]
+  \textbf{Soft Skills:} Problem Solving, Self Learning, Teaching, Communication, Teamwork, Leadership
+\end{onecolentry}
+
+% =========================
+% SELECTED PROJECTS
+% =========================
+\section{Selected Projects}
+
+% Eyes Mate
+\begin{twocolentry}{
+  \textit{\href{https://github.com/Islam-hady9/application-to-help-the-blind-eyes-mate}{GitHub Link}}}
+  \textbf{Eyes Mate — AI Application to Help the Blind (Graduation Project)}
+\end{twocolentry}
+\vspace{0.10 cm}
+\begin{onecolentry}
+  \begin{highlights}
+    \item Developed an assistive AI system enabling visually impaired users to interact with their environment using speech and computer vision.
+    \item Implemented key features including object recognition, distance measurement, text reading, currency recognition, and face recognition with real-time voice feedback.
+  \end{highlights}
+\end{onecolentry}
+
+% Brain Tumor Detection API
+\begin{twocolentry}{
+  \textit{\href{https://github.com/Islam-hady9/BrainTumorDetection-API}{GitHub Link}}}
+  \textbf{Brain Tumor Detection API}
+\end{twocolentry}
+\vspace{0.10 cm}
+\begin{onecolentry}
+  \begin{highlights}
+    \item Built a deep learning pipeline for brain tumor detection from MRI scans using CNN models.
+    \item Deployed as a RESTful API, enabling easy integration into medical applications.
+  \end{highlights}
+\end{onecolentry}
+
+% Generative AI Models
+\begin{twocolentry}{
+  \textit{\href{https://github.com/Islam-hady9/Generative-AI-Models}{GitHub Link}}}
+  \textbf{Generative AI Models}
+\end{twocolentry}
+\vspace{0.10 cm}
+\begin{onecolentry}
+  \begin{highlights}
+    \item Implemented and experimented with state-of-the-art generative AI architectures, including transformer and diffusion-based models.
+    \item Focused on \textbf{text-to-image generation} and \textbf{image-to-text understanding} for creative and practical AI applications.
+  \end{highlights}
+\end{onecolentry}
+
+% SmartAI Customer Support
+\begin{twocolentry}{
+  \textit{\href{https://github.com/Islam-hady9/SmartAI_CustomerSupport}{GitHub Link}}}
+  \textbf{SmartAI Customer Support}
+\end{twocolentry}
+\vspace{0.10 cm}
+\begin{onecolentry}
+  \begin{highlights}
+    \item Designed an AI-powered customer support assistant leveraging retrieval-augmented generation (RAG).
+    \item Improved customer response quality with contextual answers and multilingual support.
+  \end{highlights}
+\end{onecolentry}
+
+% Deep CUDA
+\begin{twocolentry}{
+  \textit{\href{https://github.com/Islam-hady9/deep-cuda}{GitHub Link}}}
+  \textbf{Deep CUDA — GPU Acceleration from Scratch}
+\end{twocolentry}
+\vspace{0.10 cm}
+\begin{onecolentry}
+  \begin{highlights}
+    \item Developed an advanced implementation of a \textbf{Convolutional Neural Network (CNN)} in CUDA C++ to classify images from the MNIST dataset.
+    \item Built custom CUDA kernels for forward and backward propagation, matrix multiplication, convolution, and memory management, without relying on high-level frameworks.
+    \item Optimized GPU performance through \textbf{thread/block management, shared memory usage, and parallel reduction techniques}, achieving efficient large-scale parallel computation.
+    \item Demonstrated strong foundations in \textbf{low-level GPU programming}, bridging the gap between algorithm design and hardware acceleration for AI workloads.
+  \end{highlights}
+\end{onecolentry}
+
+% =========================
+% CERTIFICATIONS
+% =========================
+\section{Certifications}
+\begin{onecolentry}
+\begin{highlightsforbulletentries}
+  \item \textbf{Generative AI with Large Language Models} — Coursera \hfill Apr 2025 \\
+  \href{https://drive.google.com/file/d/1qkDcCiYGasivGr5Ozfq51DuBgaE9j0fO/view?usp=drivesdk}{Certificate Link}
+
+  \item \textbf{Advanced Learning Algorithms} — DeepLearning.AI \hfill Sep 2023 \\
+  \href{https://drive.google.com/file/d/1Z9-hwfvvIeLOC-8foyEUdOdJaSkE454v/view}{Certificate Link}
+
+  \item \textbf{Deep Learning with PyTorch: Image Segmentation} — Coursera \hfill Sep 2023 \\
+  \href{https://drive.google.com/file/d/1byehbMkf4Dr-BL1l5z1EIZo6ju8OVS-5/view}{Certificate Link}
+
+  \item \textbf{Empedia Competitive Programming Competition} — Empedia \hfill Aug 2023 \\
+  \href{https://drive.google.com/file/d/1N9leyAlDCAoQzjANXn2pMyp6Ec1NC_Td/view}{Certificate Link}
+
+  \item \textbf{Mathematics for Computer Science} — BIO CODE, Assiut University \hfill Aug 2023 \\
+  \href{https://drive.google.com/file/d/1XvkvbVA_PuUV7hGh3bC6Cu3Z-ZVlwk1D/view}{Certificate Link}
+
+  \item \textbf{Supervised Machine Learning: Regression and Classification} — DeepLearning.AI \hfill Mar 2023 \\
+  \href{https://drive.google.com/file/d/1FOQtu1kBrybHJn99R28ZX3afhqk_I6Wj/view}{Certificate Link}
+
+  \item \textbf{Python Programming Basics} — MaharaTech \hfill Feb 2023 \\
+  \href{https://drive.google.com/file/d/13DwIJIlSSwFtjmZxjMQ2dic9SpJJu5SY/view}{Certificate Link}
+
+  \item \textbf{Database Fundamentals} — MaharaTech \hfill Feb 2023 \\
+  \href{https://drive.google.com/file/d/1YMmTIxpXn5Nbpqqwb5jBVqCpGkQrXioX/view}{Certificate Link}
+\end{highlightsforbulletentries}
+\end{onecolentry}
+
+% =========================
+% PUBLICATIONS & RESEARCH
+% =========================
+\section{Publications \& Research}
+\begin{onecolentry}
+\begin{highlightsforbulletentries}
+  \item \textbf{AI Traffic Violation in Smart Cities and Flying Vehicles} — Research on AI-driven real-time monitoring, detection, and enforcement to enhance intelligent transportation systems and urban mobility.
+\end{highlightsforbulletentries}
+\end{onecolentry}
+
+% =========================
+% LANGUAGES (HUMAN)
+% =========================
+\section{Languages}
+\begin{onecolentry}
+  Arabic (Native) \quad\AND\quad English (Professional)
+\end{onecolentry}
+
+\end{document}
